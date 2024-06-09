@@ -7,14 +7,17 @@ public class StockVentas {
     private String Estado;
     private String Fecha;
     private String FechaPago;
-    public StockVentas(int ID, String Cliente, String Producto, int Cantidad, String Estado,String Fecha,String FechaPago){
-        this.ID=ID;
-        this.Cliente=Cliente;
-        this.Producto=Producto;
-        this.Cantidad=Cantidad;
-        this.Estado=Estado;
-        this.Fecha=Fecha;
-        this.FechaPago=FechaPago;
+    private int IDFacturaAsociada;
+
+    public StockVentas(int ID, String Cliente, String Producto, int Cantidad, String Estado, String Fecha, String FechaPago, int IDFacturaAsociada) {
+        this.ID = ID;
+        this.Cliente = Cliente;
+        this.Producto = Producto;
+        this.Cantidad = Cantidad;
+        this.Estado = Estado;
+        this.Fecha = Fecha;
+        this.FechaPago = FechaPago;
+        this.IDFacturaAsociada = IDFacturaAsociada;
     }
 
     public int getID() {
@@ -37,6 +40,18 @@ public class StockVentas {
         return Estado;
     }
 
+    public String getFecha() {
+        return Fecha;
+    }
+
+    public String getFechaPago() {
+        return FechaPago;
+    }
+
+    public int getIDFacturaAsociada() {
+        return IDFacturaAsociada;
+    }
+
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -57,20 +72,16 @@ public class StockVentas {
         this.Estado = Estado;
     }
 
-    public String getFecha() {
-        return Fecha;
-    }
-
     public void setFecha(String Fecha) {
         this.Fecha = Fecha;
     }
 
-    public String getFechaPago() {
-        return FechaPago;
-    }
-
     public void setFechaPago(String FechaPago) {
         this.FechaPago = FechaPago;
+    }
+
+    public void setIDFacturaAsociada(int IDFacturaAsociada) {
+        this.IDFacturaAsociada = IDFacturaAsociada;
     }
     
     

@@ -5,10 +5,10 @@ import javafx.scene.control.*;
 import javafx.stage.*;
 import javafx.animation.*;
 import javafx.geometry.*;
-import javafx.util.Duration;
 import javafx.scene.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.util.*;
 public class Main extends Application {
 
     @Override

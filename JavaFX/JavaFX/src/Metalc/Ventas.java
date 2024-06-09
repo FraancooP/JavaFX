@@ -183,6 +183,8 @@ public class Ventas {
         column6.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
         TableColumn<StockVentas, String> column7 = new TableColumn<>("FechaPago");
         column7.setCellValueFactory(new PropertyValueFactory<>("FechaPago"));
+        TableColumn<StockVentas, String> column8 = new TableColumn<>("IDFacturaAsociada");
+        column8.setCellValueFactory(new PropertyValueFactory<>("IDFacturaAsociada"));
         tablaVentas.getColumns().add(column1);
         tablaVentas.getColumns().add(column2);
         tablaVentas.getColumns().add(column3);
@@ -190,10 +192,11 @@ public class Ventas {
         tablaVentas.getColumns().add(column5);
         tablaVentas.getColumns().add(column6);
         tablaVentas.getColumns().add(column7);
-        tablaVentas.getItems().add(new StockVentas(1, "Joaquin","Transistor",2,"Pendiente","12/10/2001","--/--/--"));
-        tablaVentas.getItems().add(new StockVentas(2, "Franco","Bobina",2,"Pendiente","9/11/2001","--/--/--"));
-        tablaVentas.getItems().add(new StockVentas(3, "Fabri","Cable2A",12,"Pendiente","15/6/2001","--/--/--"));
-        tablaVentas.getItems().add(new StockVentas(4, "Agus","Resistor",122,"Completado","18/3/2001","18/3/2001"));
+        tablaVentas.getColumns().add(column8);
+        tablaVentas.getItems().add(new StockVentas(1, "Joaquin","Transistor",2,"Pendiente","12/10/2001","--/--/--",1));
+        tablaVentas.getItems().add(new StockVentas(2, "Franco","Bobina",2,"Pendiente","9/11/2001","--/--/--",2));
+        tablaVentas.getItems().add(new StockVentas(3, "Fabri","Cable2A",12,"Pendiente","15/6/2001","--/--/--",3));
+        tablaVentas.getItems().add(new StockVentas(4, "Agus","Resistor",122,"Completado","18/3/2001","18/3/2001",4));
         Label buscarCliente = new Label("Filtrar por nombre de cliente");
         Label cliente = new Label("Ingrese nombre cliente:");
         Label buscarID = new Label("Filtrar venta por ID");
