@@ -1,18 +1,14 @@
 package Metalc;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.animation.FadeTransition;
-import javafx.geometry.Pos;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.*;
+import javafx.stage.*;
+import javafx.animation.*;
+import javafx.geometry.*;
 import javafx.util.Duration;
-
+import javafx.scene.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 public class Main extends Application {
 
     @Override

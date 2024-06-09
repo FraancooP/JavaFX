@@ -2,26 +2,15 @@ package Metalc;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert.*;
+import javafx.scene.control.cell.*;
 import javafx.scene.layout.VBox;
 
 public class Ventas {
@@ -146,8 +135,6 @@ public class Ventas {
         TextField fecha = new TextField();
         
         
-        
-        
         Button registerButton = new Button("Registrar Venta");
         registerButton.setOnAction(e -> {
             String cliente = clientInput.getText();
@@ -179,7 +166,7 @@ public class Ventas {
         root.getChildren().add(grid);
     });
     menu1Item2.setOnAction(e ->{
-        primaryStage.setTitle("Registrar Venta");
+        primaryStage.setTitle("Historial de Ventas");
         root.getChildren().removeIf(node -> node != menuBar);
         TableView tablaVentas = new TableView();
         TableColumn<StockVentas, Integer> column1 = new TableColumn<>("ID");
@@ -238,6 +225,134 @@ public class Ventas {
         root.getChildren().add(tablaVentas);
         root.getChildren().add(grid);
         });
+    
+    menu2Item1.setOnAction(e ->{
+        primaryStage.setTitle("Registrar Cliente");
+        root.getChildren().removeIf(node -> node != menuBar);
+        Label clienteLabel = new Label("Ingrese los datos del cliente.");
+        Label nombreCliente = new Label("Ingrese nombre:");
+        Label apellidoCliente = new Label("Ingrese apellido:");
+        Label dni = new Label("Ingrese DNI:");
+        Label domicilio = new Label("Ingrese Direccion:");
+        Label email = new Label("Ingrese EMAIL:");
+        Label telefono = new Label("Ingrese numero de telefono:");
+        
+        TextField nombreInput = new TextField();
+        TextField apellidoInput = new TextField();
+        TextField dniInput = new TextField();
+        TextField domicilioInput = new TextField();
+        TextField emailInput = new TextField();
+        TextField telefonoInput = new TextField();
+        
+        Button confirmarButton = new Button("Confirmar Registro");
+        //confirmarButton.setOnAction(eh); Hacer logica de boton
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+        grid.addRow(0, clienteLabel);
+        grid.addRow(1, nombreCliente,nombreInput,apellidoCliente,apellidoInput);
+        grid.addRow(2, dni,dniInput);
+        grid.addRow(3, domicilio,domicilioInput);
+        grid.addRow(4, email,emailInput);
+        grid.addRow(5, telefono,telefonoInput);
+        grid.addRow(6,confirmarButton);
+        root.getChildren().add(grid);
+        
+    });
+    menu2Item2.setOnAction(e ->{
+        primaryStage.setTitle("Clientes Registrados");
+        root.getChildren().removeIf(node -> node != menuBar);
+        TableView tablaClientes= new TableView();
+        TableColumn<StockVentas, Double> column1 = new TableColumn<>("ID");
+        column1.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        TableColumn<StockVentas, String> column2 = new TableColumn<>("Nombre");
+        column2.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        TableColumn<StockVentas, String> column3 = new TableColumn<>("Apellido");
+        column3.setCellValueFactory(new PropertyValueFactory<>("Apellido"));
+        TableColumn<StockVentas, String> column4 = new TableColumn<>("DNI");
+        column4.setCellValueFactory(new PropertyValueFactory<>("DNI"));
+        TableColumn<StockVentas, String> column5 = new TableColumn<>("Email");
+        column5.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        TableColumn<StockVentas, String> column6 = new TableColumn<>("Telefono");
+        column6.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        tablaClientes.getColumns().add(column1);
+        tablaClientes.getColumns().add(column2);
+        tablaClientes.getColumns().add(column3);
+        tablaClientes.getColumns().add(column4);
+        tablaClientes.getColumns().add(column5);
+        tablaClientes.getColumns().add(column6);
+        tablaClientes.getItems().add(new Cliente(1, "Juan","Perez","43807738","Constancia123","direccion@gmail.com","3547579693"));
+        tablaClientes.getItems().add(new Cliente(2, "Carlos","Gomez","43807738","Constancia213","direccion@gmail.com","3547579693"));
+        tablaClientes.getItems().add(new Cliente(3, "Fabricio","Posada","43807738","Constancia521","direccion@gmail.com","3547579693"));
+        tablaClientes.getItems().add(new Cliente(4, "Agustin","Rodeyro","43807738","Constancia146","direccion@gmail.com","3547579693"));
+        Label busquedaCliente = new Label("Ingrese nombre de cliente a buscar:");
+        TextField clienteInput = new TextField();
+        Button botonBusqueda = new Button("Buscar");
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+        grid.addRow(0,busquedaCliente,clienteInput);
+        grid.addRow(1,botonBusqueda);
+        root.getChildren().add(tablaClientes);
+        root.getChildren().add(grid);
+    });
+    menu3Item1.setOnAction(e ->{
+        primaryStage.setTitle("Buscar Producto");
+        root.getChildren().removeIf(node -> node != menuBar);
+        TableView tablaProductos= new TableView();
+        TableColumn<Producto, Integer> column1 = new TableColumn<>("ID");
+        column1.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        TableColumn<Producto, String> column2 = new TableColumn<>("Nombre");
+        column2.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        TableColumn<Producto, String> column3 = new TableColumn<>("Precio");
+        column3.setCellValueFactory(new PropertyValueFactory<>("Precio"));
+        TableColumn<Producto, String> column4 = new TableColumn<>("Cantidad");
+        column4.setCellValueFactory(new PropertyValueFactory<>("Cantidad"));
+        tablaProductos.getColumns().add(column1);
+        tablaProductos.getColumns().add(column2);
+        tablaProductos.getColumns().add(column3);
+        tablaProductos.getColumns().add(column4);
+        tablaProductos.getItems().add(new Producto(1,"Transistor","$350000",300));
+        tablaProductos.getItems().add(new Producto(2,"Cable","$100",500));
+        tablaProductos.getItems().add(new Producto(3,"Bobina","$50123",20));
+        tablaProductos.getItems().add(new Producto(4,"Amperimetro","$45000",150));
+        Label busquedaProducto = new Label("Ingrese nombre de Producto");
+        TextField productoInput = new TextField();
+        Button botonBusqueda = new Button("Buscar");
+        Button botonCarga = new Button("Cargar Producto");
+        Button botonModificar = new Button("Modificar Productos");
+        Label cargarProducto = new Label("Cargar un nuevo producto");
+        Label nuevoProducto = new Label("Ingrese Nombre Producto: ");
+        Label precio = new Label("Ingrese Precio");
+        Label cantidad = new Label("Ingrese Cantidad");
+        Label modificar = new Label("Modificar Productos");
+        TextField nuevoProductoInput = new TextField();
+        TextField precioInput = new TextField();
+        TextField cantidadInput = new TextField();
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+        grid.addRow(0,busquedaProducto,productoInput);
+        grid.addRow(1,botonBusqueda);
+        grid.addRow(2,cargarProducto);
+        grid.addRow(3,nuevoProducto,nuevoProductoInput);
+        grid.addRow(4,precio,precioInput);
+        grid.addRow(5,cantidad,cantidadInput);
+        grid.addRow(6,botonCarga);
+        grid.addRow(7,modificar,botonModificar);
+        root.getChildren().add(tablaProductos);
+        root.getChildren().add(grid);
+        
+    
+    
+    
+    });
+    
+    
+    
     // Implementar el resto de manejadores de eventos para las otras opciones del menú...
 }
 
