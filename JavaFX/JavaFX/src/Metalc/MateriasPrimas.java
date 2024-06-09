@@ -24,7 +24,7 @@ public class MateriasPrimas {
 
     public void login(Stage primaryStage) {
         Stage loginStage = new Stage();
-        loginStage.setTitle("Login Ventas");
+        loginStage.setTitle("Login MateriasPrimas");
 
         // Crear el GridPane
         GridPane grid = new GridPane();
