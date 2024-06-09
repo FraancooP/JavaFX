@@ -353,10 +353,6 @@ public class Ventas {
     
     
     });
-    
-    
-    
-    // Implementar el resto de manejadores de eventos para las otras opciones del menú...
 }
 
 }

@@ -100,12 +100,10 @@ public class MateriasPrimas {
     Menu menu2 = new Menu("Pedidos");
     MenuItem menu1Item1 = new MenuItem("Consultar Stock");
     MenuItem menu2Item1 = new MenuItem("Registrar nuevo pedido");
-    MenuItem menu2Item2 = new MenuItem("Registrar nuevo proveedor");
-    MenuItem menu2Item3 = new MenuItem("Consultar registro de Pedidos");
+    MenuItem menu2Item2 = new MenuItem("Consultar registro de Pedidos");
     menu1.getItems().add(menu1Item1);
     menu2.getItems().add(menu2Item1);
     menu2.getItems().add(menu2Item2);
-    menu2.getItems().add(menu2Item3);
     menuBar.getMenus().add(menu1);
     menuBar.getMenus().add(menu2);
     VBox root = new VBox(menuBar);
@@ -226,8 +224,66 @@ public class MateriasPrimas {
     
     
     
-    menu2Item2.setOnAction(event ->{});
-    menu2Item3.setOnAction(event ->{});
+    menu2Item2.setOnAction(event ->{
+        primaryStage.setTitle("Historial de pedidos");
+        root.getChildren().removeIf(node -> node != menuBar);
+        TableView tablaPedidos = new TableView();
+        TableColumn<PedidoMateriaPrima, Integer> column1 = new TableColumn<>("ID");
+        column1.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        TableColumn<PedidoMateriaPrima, Integer> column2 = new TableColumn<>("Nombre");
+        column2.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        TableColumn<PedidoMateriaPrima, Integer> column3 = new TableColumn<>("Materia");
+        column3.setCellValueFactory(new PropertyValueFactory<>("Cantidad"));
+        TableColumn<PedidoMateriaPrima, Integer> column4 = new TableColumn<>("Cantidad");
+        column4.setCellValueFactory(new PropertyValueFactory<>("Cantidad"));
+        TableColumn<PedidoMateriaPrima, Integer> column5 = new TableColumn<>("Monto");
+        column5.setCellValueFactory(new PropertyValueFactory<>("Monto"));
+        TableColumn<PedidoMateriaPrima, Integer> column6 = new TableColumn<>("NumeroFactura");
+        column6.setCellValueFactory(new PropertyValueFactory<>("NumeroFactura"));
+        TableColumn<PedidoMateriaPrima, Integer> column7 = new TableColumn<>("Estado");
+        column7.setCellValueFactory(new PropertyValueFactory<>("Estado"));
+        TableColumn<PedidoMateriaPrima, Integer> column8 = new TableColumn<>("Fecha");
+        column8.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
+        tablaPedidos.getColumns().add(column1);
+        tablaPedidos.getColumns().add(column2);
+        tablaPedidos.getColumns().add(column3);
+        tablaPedidos.getColumns().add(column4);
+        tablaPedidos.getColumns().add(column5);
+        tablaPedidos.getColumns().add(column6);
+        tablaPedidos.getColumns().add(column7);
+        tablaPedidos.getColumns().add(column8);
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(13,"Proveedor2","Cobre","30KG","$150000","50327","Pendiente","20/10/2001"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(14,"Proveedor3","Hierro","70KG","$250000","50328","Entregado","25/11/2001"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(15,"Proveedor4","Aluminio","20KG","$200000","50329","Cancelado","30/12/2001"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(16,"Proveedor5","Níquel","45KG","$180000","50330","Pendiente","5/1/2002"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(17,"Proveedor6","Zinc","60KG","$220000","50331","Entregado","10/2/2002"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(18,"Proveedor7","Plata","15KG","$400000","50332","Pendiente","15/3/2002"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(19,"Proveedor8","Oro","5KG","$1200000","50333","Entregado","20/4/2002"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(20,"Proveedor9","Platino","10KG","$800000","50334","Pendiente","25/5/2002"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(21,"Proveedor10","Palladio","25KG","$600000","50335","Cancelado","30/6/2002"));
+        tablaPedidos.getItems().add(new PedidoMateriaPrima(22,"Proveedor11","Cobalto","35KG","$500000","50336","Entregado","5/7/2002"));
+        
+        Label busquedaProveedor = new Label("Ingrese nombre del Proveedor: ");
+        TextField proveedorInput = new TextField();
+        Label materiaBuscar = new Label("Ingrese Materia Prima: ");
+        TextField materiaInput = new TextField();
+        Label fecha = new Label("Ingrese Fecha(DD/MM/AA): ");
+        TextField fechaInput = new TextField();
+        Button botonFiltrarProveedor = new Button("Filtrar");
+        Button botonFiltrarMateria = new Button("Filtrar");
+        Button botonFiltrarFecha = new Button("Filtrar");
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+        grid.addRow(0,busquedaProveedor,proveedorInput,botonFiltrarProveedor);
+        grid.addRow(1,materiaBuscar,materiaInput,botonFiltrarMateria);
+        grid.addRow(2,fecha,fechaInput,botonFiltrarFecha);
+        
+        
+        root.getChildren().add(tablaPedidos);
+        root.getChildren().add(grid);
+    });
     }
     
 }

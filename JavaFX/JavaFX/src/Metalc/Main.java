@@ -61,6 +61,8 @@ public class Main extends Application {
         //VBox vBox = new VBox(10, imageView1, ventasButton, imageView2, materiasPrimasButton, imageView3, enviosButton);
         Scene loginScene = new Scene(new StackPane(hbox), 800, 300);
         primaryStage.setScene(loginScene);
+        primaryStage.setMaximized(true);
+        
     }
 
     public static void main(String[] args) {
